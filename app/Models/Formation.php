@@ -16,6 +16,10 @@ class Formation extends Model
         'titre',
         'nbreHeure',
     ];
+    public function getRouteKeyName()
+    {
+        return 'idf';
+    }
     public function classes()
     {
         return $this->hasMany(Classe::class, 'idformation', 'idf');
@@ -27,5 +31,12 @@ public function avis()
     return $this->hasMany(Avi::class, 'formation_id', 'idf');
 }
 
+
+public function etudiants()
+{
+    return $this->belongsToMany(Etudiant::class, 'avis', 'idf', 'ide')
+                ->withPivot('points')
+                ->withTimestamps();
+}
 
 }

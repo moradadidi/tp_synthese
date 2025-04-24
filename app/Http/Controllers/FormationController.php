@@ -52,6 +52,7 @@ class FormationController extends Controller
      */
     public function edit(Formation $formation)
     {
+        // dd($formation);
         return view('formations.edit', compact('formation'));
     }
 

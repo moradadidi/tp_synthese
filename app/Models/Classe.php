@@ -12,7 +12,10 @@ class Classe extends Model
 
     protected $table = 'classes';
     protected $primaryKey = 'idc';
-
+    public function getRouteKeyName()
+{
+    return 'idc';
+}
     protected $fillable = [
         'libelle',
         'idformation',

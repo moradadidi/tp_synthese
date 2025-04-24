@@ -67,7 +67,11 @@ class EtudiantController extends Controller
      */
     public function edit(Etudiant $etudiant)
     {
-        return view('etudiants.edit', compact('etudiant'));
+        return view('etudiants.edit', [
+            'etudiant' => $etudiant,
+            'classes' => Classe::all(),
+            'formations' => Formation::all(),
+        ]);
     }
 
     /**

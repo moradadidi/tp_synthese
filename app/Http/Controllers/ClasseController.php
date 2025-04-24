@@ -38,11 +38,12 @@ class ClasseController extends Controller
         return view('classes.show', compact('classe'));
     }
 
-    public function edit(Classe $classe)
+    public function edit(Classe $class)
     {
         $formations = Formation::all();
-        return view('classes.edit', compact('classe', 'formations'));
+        return view('classes.edit', ['classe' => $class, 'formations' => $formations]);
     }
+    
 
     public function update(Request $request, Classe $classe)
     {

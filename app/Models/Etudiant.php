@@ -16,6 +16,10 @@ class Etudiant extends Model
 
     public $incrementing = true;
     protected $keyType = 'int';
+    public function getRouteKeyName()
+{
+    return 'codeE';
+}
 
     protected $fillable = ['codeE', 'nom', 'prenom', 'adresse', 'dateNaissance', 'idclasse'];
 
@@ -28,4 +32,12 @@ class Etudiant extends Model
     {
         return $this->hasMany(Avi::class);
     }
+
+    public function formations()
+{
+    return $this->belongsToMany(Formation::class, 'avis', 'ide', 'idf')
+                ->withPivot('points')
+                ->withTimestamps();
+}
+
 }

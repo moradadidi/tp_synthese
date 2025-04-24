@@ -19,9 +19,12 @@
                 </p>
             </div>
         </div>
-        <div class="bg-gray-100 dark:bg-gray-700 px-6 py-4">
+        <div class="bg-gray-100 dark:bg-gray-700 px-6 py-4 flex justify-between items-center">
             <a href="{{ route('classes.index') }}" class="text-blue-600 dark:text-blue-400 font-medium hover:underline flex items-center">
                 ← Retour à la liste
+            </a>
+            <a href="{{ route('classes.edit', $classe->idc) }}" class="text-white bg-blue-600 hover:bg-blue-700 font-medium py-2 px-4 rounded">
+                Modifier
             </a>
         </div>
     </div>

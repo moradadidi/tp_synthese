@@ -14,8 +14,20 @@ class AviController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+    
     {
-        $avis = Avi::with('etudiant', 'formation')->get();
+        $avis = [];
+        $etudiants = Etudiant::with('formations')->get();
+        foreach ($etudiants as $etudiant) {
+            foreach ($etudiant->formations as $formation) {
+            $avis[] = [
+                'avid' => $formation->pivot,
+                'etudiant' => $etudiant->nom, 
+                'formation' => $formation->titre, 
+                'points' => $formation->pivot->points,
+            ];
+            }
+        }
         // dd($avis);
         return view('avis.index', compact('avis'));
     }
@@ -35,19 +47,21 @@ class AviController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'ide'    => 'required|exists:etudiants,codeE',
-        'idf'    => 'required|exists:formations,idf',
-        'points' => 'required|integer|min:0',
-    ]);
-
-    Avi::create($request->all());
-
-    return redirect()
-        ->route('avis.index')
-        ->with('success', 'Avis créé avec succès.');
-}
+        {
+            $request->validate([
+                'ide'    => 'required|exists:etudiants,codeE',
+                'idf'    => 'required|exists:formations,idf',
+                'points' => 'required|integer|min:0|max:10',
+            ]);
+    
+            $etudiant = Etudiant::findOrFail($request->ide);
+    
+            $etudiant->formations()->syncWithoutDetaching([
+                $request->idf => ['points' => $request->points]
+            ]);
+    
+            return redirect()->route('avis.index');
+        }
 
 
     /**

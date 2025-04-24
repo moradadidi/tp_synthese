@@ -16,10 +16,11 @@
     <div class="grid md:grid-cols-2 gap-6">
         @foreach ($avis as $avi)
             <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Etudiant: {{ $avi->etudiant->nom ?? 'N/A' }}</h2>
-                <p class="text-gray-600 dark:text-gray-300">Formation: {{ $avi->formation->titre ?? 'N/A' }}</p>
-                <p class="text-gray-600 dark:text-gray-300">Points: {{ $avi->points }}</p>
-                <a href="{{ route('avis.show', $avi) }}" class="text-blue-500 hover:underline mt-2 inline-block">Voir détails</a>
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Etudiant: {{ $avi['etudiant'] ?? 'N/A' }}</h2>
+                <p class="text-gray-600 dark:text-gray-300">Formation: {{ $avi['formation'] ?? 'N/A' }}</p>
+                <p class="text-gray-600 dark:text-gray-300">Points: {{ $avi['points'] }}</p>
+                {{-- <a href="{{ route('avis.show', $avi) }}" class="text-blue-500 hover:underline mt-2 inline-block">Voir détails</a> --}}
+
             </div>
         @endforeach
     </div>
