@@ -6,6 +6,7 @@ use App\Models\Etudiant;
 use App\Models\Classe;
 use App\Models\Formation;
 use App\Http\Controllers\Controller;
+use Devrabiul\ToastMagic\Facades\ToastMagic;
 use Illuminate\Http\Request;
 
 class EtudiantController extends Controller
@@ -49,6 +50,7 @@ class EtudiantController extends Controller
         ]);
 
         Etudiant::create($request->all());
+        ToastMagic::success('Team added successfully!');
         return redirect()->route('etudiants.index');
     }
 
@@ -96,6 +98,7 @@ class EtudiantController extends Controller
     public function destroy(Etudiant $etudiant)
     {
         $etudiant->delete();
+        ToastMagic::error('Team deleted successfully!');
         return redirect()->route('etudiants.index');
     }
 }

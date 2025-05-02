@@ -13,6 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
   <title>@yield('title')</title>
+  {!! ToastMagic::styles() !!}
 
   <style>
     /* Apply your custom font */
@@ -78,5 +79,7 @@
       document.documentElement.classList.add('dark');
     }
   </script>
+      {!! ToastMagic::scripts() !!}
+
 </body>
 </html>
