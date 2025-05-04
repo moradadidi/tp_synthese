@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             FormationSeeder::class,
             ClasseSeeder::class,
             EtudiantSeeder::class,
-            AviSeeder::class
+            AviSeeder::class,
+            CommandeProduitSeeder::class
         ]);
     }
 }
