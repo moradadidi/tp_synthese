@@ -21,11 +21,12 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            FormationSeeder::class,
-            ClasseSeeder::class,
-            EtudiantSeeder::class,
-            AviSeeder::class,
-            CommandeProduitSeeder::class
+            ClubSeeder::class
+            // FormationSeeder::class,
+            // ClasseSeeder::class,
+            // EtudiantSeeder::class,
+            // AviSeeder::class,
+            // CommandeProduitSeeder::class
         ]);
     }
 }
