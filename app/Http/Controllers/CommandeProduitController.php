@@ -13,7 +13,8 @@ class CommandeProduitController extends Controller
      */
     public function index()
     {
-        //
+        $commandeProduits = CommandeProduit::all();
+        return view('commande-produits.index', compact('commandeProduits'));
     }
 
     /**
